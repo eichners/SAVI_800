@@ -1,0 +1,219 @@
+CSS
+
+css 
+
+p a {
+	/* selects as within p's : some style */
+}
+
+p, a {
+	/* selects a's and p's: some style */
+}
+
+p > a {
+	/* selects a which are direct descendent of p some style */
+}
+
+
+selectors
+
+JS
+
+OBJECTS
+structure data with objects
+(Review: look for object lessons)
+
+Events:
+actions taken by user
+. are accessors
+
+$(.myButton).click(function() {
+	.... more code here
+}
+
+$ is a jquery function
+so is .click
+
+
+var map = L.map('map');
+L.map: map is the function; L is leaflet, . tells the functino to access Leaflet
+
+
+Places for solutions:
+
+go to 
+- MDN (mozilla) Selecct filters on right to narrow down examples
+- CSS tricks > Almanac
+
+Javascript editor online
+JSBIN
+input and output viewed side by side like js Fiddle
+
+add jquery with CDN: go to jquery website and cut and paste
+
+
+CSS
+
+CARTO CSS
+
+# = layer name
+
+CONDITIONAL STATEMENTS
+
+#earthquakes {
+	
+	[zoom > 10][zoom < 13] {
+	marker-fill: red;
+	}
+}
+humanitarian data model 
+	HDM-cartoCSS
+
+	example from cartoDB class exercise 
+*** CONDITIONAL STATEMENTS WITH CARTO-CSS ***
+
+	#listings{
+  marker-fill-opacity: 0.5;
+  marker-line-color: #FFF;
+  marker-line-width: 0;
+  marker-line-opacity: 1;
+  marker-placement: point;
+  marker-type: ellipse;
+  marker-width: 6;
+  marker-fill:hsl(284, 39%, 50%);
+  marker-allow-overlap: true;
+  marker-comp-op:multiply;
+  
+  [room_type='Entire home/apt']{
+    marker-fill: #d13838;
+}
+  [price>500]{
+    marker-width:20;
+  }
+  [price>200][price<500] {
+    marker-width:13;
+  }
+  [zoom>=13] {
+    marker-fill-opacity:0.9;
+  }
+  [host_name='Pierre']{
+    marker-fill:blue;
+    marker-opacity:1;
+    marker-width:30;
+  }  
+}
+
+use =~ 'P.*' to find any names starting with P
+
+****** SQL  --  STRUCTURED QUERY LANGUAGE ******
+language that databases understand, use to pull data out of database.
+
+selecting data
+
+SELECT *            (choose columns)
+FROM listings       (table)
+
+include geometry in selection, or * to select all columns
+the_geom_webmercator
+
+select * chooses all the columns
+
+SELECT host_name, price, the_geom_webmercator
+FROM listings
+WHERE host_name IS NOT NULL AND host_name != ''
+
+
+where is only used to limit rows from a selection
+select is from columns
+
+operators are same as javascript and css 
+but = sign is an equal sign, not assigner
+you can use and and or
+or expands, and limits
+use 
+WHERE NOT to not choose things that meet that condition
+
+Select doesn't chabe table, just the view
+
+use sleect to count
+
+SELECT COUNT (*) (picks columns)
+FROM Listings (whichever table you want)
+WHERE price < 100 (where picks rows)
+
+add new column by 
+SELECT *, availablity_365 * price AS total_income
+FROM listings
+
+THEN use interface message to create a new dataset from query
+
+use undo and redo when sql or css gets lost
+
+**** when deleting from sql  one must include "where" or all will be deleted
+
+class exercise part 3
+
+SELECT *
+ FROM listings
+WHERE neighbourhood = 'Ville-Marie' AND price < 50
+--------------
+COUNT 
+
+SELECT COUNT (*)
+FROM listings
+WHERE neighbourhood = 'Ville-Marie' AND price < 50
+
+result: 303
+---------------
+
+Minimum price for Ville-Marie: SELECT MIN (price),
+MAX (price)
+FROM listings
+WHERE neighbourhood = 'Ville-Marie' 
+*** result: 13
+MAX: 3201
+--------------
+GET AVERAGE PRICE IN Ville_Maire
+
+SELECT sum(price)/303
+FROM listings
+WHERE neighbourhood = 'Ville-Marie' 
+
+RESULT: 765
+-----------
+Another way to do all this i think?
+SELECT min(price), max(price), avg(price)
+FROM listings
+
+TO RE-SORT DATA:
+
+SELECT *
+FROM listings
+ORDER BY price
+LIMIT 1
+
+--------------
+
+GROUPING:
+SELECT room_type, avg(price)
+FROM listings
+GROUP BY room_type
+
+This gets average for just this group -- often useful 
+
+
+-------------
+for homework
+-------------
+IFRAMES
+EMBEDDING MAPS ON A WEBPAGE
+>> publish >> emed it (copy code) 
+cut and paste into editor and it's there on your own web page
+
+uses an iframe element
+
+POST PAGE TO GITHUB
+organize github new repository for this
+and make new github pages for it
+or just use the username page I already have which might make sense
+

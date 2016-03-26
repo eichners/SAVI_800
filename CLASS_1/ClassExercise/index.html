@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Class 1</title>
+  
+  		<script src="http://code.jquery.com/jquery-1.12.0.min.js">
+	    </script>
+	  <!---<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+-->
+	<style> 
+		.colorBlock {
+          background:red;
+          width: 400px;
+          height: 200px;
+          border-radius: 8px;
+		}
+
+		.textHover {
+      color:red;
+			font-size: 70px;
+			font-weight: bolder;
+		}
+
+		h1 {
+			font-family: Helvetica;
+			font-size: 50px;
+			font-weight: bold;
+		}
+
+		p {
+			font-family: Helvetica;
+			font-size: 20px;
+			font-weight: bold;
+			color:green;
+      line-height: 15px;
+		}
+
+    .words {
+      background:yellow;
+      padding:15px;
+      width: 100%;
+      height: 250px;
+    }
+
+    .color1 {
+      color:gray;
+      font-size:30px;
+      line-height: 10px;
+    }
+    
+    .color2 {
+      color:gray;
+      font-size:30px;
+      line-height: 10px;
+    }
+
+
+
+	</style>
+
+  <script> 
+  // wait for page to load
+      $(document).ready(function() {
+  // select elements with class colors and listens for change >> .ready and .change are jquery functions - look on MDN
+      $('select').change(function() {
+  // '.colors' accesses colors from below in css; print to console the value of the thing that was selected .val is a standard jquery function
+          console.log($(this).val());
+  // select elements with the class '.box' and use jquery function .css to style them
+              $('.colorBlock').css({'background-color':$(this).val()
+  //change background color css property to value selected
+
+                  });
+              });
+          });
+
+
+$(document).ready(function() {
+      	$(".words").css({
+          color: 'blue',
+          fontWeight:'600',
+          fontSize:'70px',
+     });
+   });
+
+$(document).ready(function() {
+        $(".color1").css({
+          color: 'red',
+          fontWeight:'600',
+          fontSize:'70px',
+     });
+   });
+
+$(document).ready(function() {
+        $(".color2").css({
+          color: 'blue',
+          fontWeight:'600',
+          fontSize:'70px',
+     });
+});
+
+  </script>
+</head> 
+  
+<!-- NOTES
+  document.ready -tells computer to wait until doc has loaded
+  .ready is an event listener
+  $('.colors') . accesses anything in class 'colors' 
+  .change (function).... listens for change
+  $(this).val());
+this >> is a jquery thing that refers back to whatever fired the event
+  .val() is a jquery function
+  .css(properties) is a jquery thing too, look up at MDN 
+-->
+<body>
+	<div class ="colorBlock"> 
+	<br/>
+    <select>
+      <option value="red">red</option>
+      <option value="white">white</option>
+      <option value="blue">blue</option>
+      <option value="green">green</option>
+      <option value="orange">orange</option>
+    <!-- value is an html attribute-->
+    </select>
+    </div>
+    <br/>
+    <div class = "words">
+    	<h1> This is a jquery test</h1>
+    	<p>change text colors:
+    	<p class = "color1">red</p>
+    	<p class = "color2">blue</p>
+		</p>
+	</div>
+</body>
+</html>
