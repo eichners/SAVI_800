@@ -1,0 +1,346 @@
+
+APIs
+Interface for Application Program
+
+SQL API
+
+Read documentation!!!
+SQL API link in class pages
+authentication/authorization: API key
+
+making calls to SQL API
+just a series of url/s
+make them to tell other coomputer what to do
+
+lets' you run SQL through code
+URL endpoints: base part of url https://account name.cartodb.com/api/vt/sql
+
+q 
+
+JSON
+turns text into operable data -- javascript objects
+
+rstuls = JSON.parse(' QUERY result rigth here as one block of text')
+
+
+results.fields.count 
+returns type
+
+
+dots are accessors
+access things from properties, 
+rows are arrays, use 
+restuls.rows[0].count
+returns JSON data from first 
+
+**** postman: app from chrome to use with any API queries
+
+
+use it to get api stuff in easier format rather than crhome console.
+
+parameters area for convenience
+keeps a history 
+
+Example of how to use the api:
+
+PROMISES AND CALLBACKS:
+
+$.getJSON(url)
+.done(function (data) {
+	// do something with the data
+	console.log(data.rows[0]);
+	});
+
+// (data) parses data for us so no need to do the json.parse thing we did earlier
+
+earlier we used getJSON as a call back:
+$.getJSON(url, function (data) {
+	// do something with the data
+	});
+
+.done is called a PROMISE
+only called if the requst is done at some point
+also is like an event listener or like .ready
+
+AJAX
+method of doing things, to function asynchronously
+
+
+**In Action:
+
+<!DOCTYPE html>
+<html>
+  <head> </head>
+  <body>
+  
+  	  <script type="text/javascript" src="jQuery/jquery-1.11.2.min.js">
+  	  </script>
+  	  	<script>
+  	var url = 'https://eichnersara.cartodb.com/api/v2/sql?q=SELECT%20*%20FROM%20listings%20LIMIT%205';
+$.getJSON(url)
+.done(function (data) {
+	// do something with the data
+	console.log(data.rows[3].host_name);
+	console.log(data.rows);
+	console.log(data.rows[3].room_type);
+	console.log(data.rows[3].price);
+	});
+</script>
+</body>
+
+change to this and same thing will happen (changing data to antoher word or name)
+<!DOCTYPE html>
+<html>
+  <head> </head>
+  <body>
+  
+  	  <script type="text/javascript" src="jQuery/jquery-1.11.2.min.js">
+  	  </script>
+  	  	<script>
+  	var url = 'https://eichnersara.cartodb.com/api/v2/sql?q=SELECT%20*%20FROM%20listings%20LIMIT%205';
+  	var myData;
+$.getJSON(url)
+.done(function (data) {
+	// do something with the data
+	console.log(data.rows[3].host_name);
+	console.log(data.rows);
+	console.log(data.rows[3].room_type);
+	console.log(data.rows[3].price);
+	myData = data;
+
+	});
+console.log(myData);
+</script>
+
+the above is an anonymous function just because it's not named. 
+</body>
+
+
+USING MORE PARAMETERS FOR APIs
+use & 
+ampersands!
+
+In postman
+
+..... look at slides
+
+
+
+Jquery parameter function:
+
+$.param({
+	q:
+})
+
+$.param({
+  q: <your sql>,
+  format: 'GeoJSON'
+})
+q=<your sql>&format=GeoJSON
+takes objects and gives you url parameters
+
+THIS IS USING HTE API TO MAKE A LEAFLET MAP: Uses the 
+&format=GeoJSON
+//
+// Show the top 25 most expensive AirBnB rentals in New York
+// using CartoDB's SQL API.
+//
+
+$(document).ready(function () {
+  // Create a map centered on NYC
+  var map = L.map('map').setView([45.489502,-73.578873], 10);
+  
+  // Add a base layer. We're using Stamen's Toner:
+  //  http://maps.stamen.com/#toner
+  L.tileLayer('http://tile.stamen.com/toner/{z}/{x}/{y}.png', {
+    attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.',
+    maxZoom: 18
+}).addTo(map);
+  
+  // Ask CartoDB for the top 25 most expensive features, as GeoJSON
+  $.getJSON('https://eichnersara.cartodb.com/api/v2/sql?q=SELECT%20*%20FROM%20listings%20LIMIT%20200&format=GeoJSON')
+  
+    // When it's done, add the results to the map
+    .done(function (data) {
+      L.geoJson(data).addTo(map); 
+    console.log(data)
+    });
+});
+
+NEXT 
+
+we used jquery .text to change text with jquery or adding data to an element on a page
+
+PROMISES
+like .ready to allow asynchronous js to keep operating while data is fetched and loaded into memory.
+
+**************   API's *******************
+ENDPOINTS: 
+endpoints are the FIRST PART OF URL USED FOR API'S
+will be cited often in api documentatino: everything before the question mark: ? and before the query or parameters (same thing)
+
+WHY DO WE USE API'S
+- can provide a function that allows information to update on a website according to what is in the view, or where someone is, or to search within a filtered range of anything in dataset
+
+**  q
+is the query indicator for SQL
+
+** &
+separate SQL parameters with ampersand
+
+
+examples from class:
+<!DOCTYPE html>
+<html>
+<head>
+<script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+</head>
+  <body>
+    the average is: $<span class="average"></span><br/>
+        the maximum is: $<span class="maximum"></span><br/>
+        the minimum is: $<span class="minimum"></span>
+  </body>
+</html>
+
+JAVASCRIPT:
+// Add the average price of AirBnB rentals in New York 
+// using CartoDB's SQL API.
+//
+
+$(document).ready(function () {
+  // Use jQuery to call the SQL API
+  var url = 'https://eric.cartodb.com/api/v2/sql?' + $.param({
+    q: 'SELECT AVG(price), MIN(price), MAX(price) AS expensive FROM listings'
+  });
+  
+  $.getJSON(url)
+    
+    // When it's done it will pass the parsed response in data
+    .done(function (data) {
+      $('.average').text(data.rows[0].avg);
+    $('.minimum').text(data.rows[0].min);
+    $('.maximum').text(data.rows[0].expensive);
+    });
+});
+
+to round the same thing:
+
+in javascript
+
+use console:
+type math and find list of functions
+
+Math.floor(average)
+
+math.ceil(average)
+
+Math.round(average,2)
+
+try looking up on PostgreSQL instead of google
+- look at math functions
+
+This worked in cartodb
+SELECT ROUND(AVG(price),2) AS average, ROUND(MIN(price),2)AS minimum, ROUND(MAX(price),2) AS maximum FROM listings
+
+
+TO LOOK WITHIN THE RSEULTS OF THIS QUERY:
+
+just add
+WHERE price > 100 and price < 500
+
+that does the same analysis but within the range specified
+
+OR GROUP BY NEIGHBORHOOD
+
+Add 
+GROUP BY neighborhood
+
+full query here:
+SELECT neighbourhood, ROUND(AVG(price),2) AS average, ROUND(MIN(price),2)AS minimum, ROUND(MAX(price),2) AS maximum FROM listings
+GROUP BY neighbourhood
+experiment with sql 
+
+for time line that changes with slider:
+use an event listener to update time range to update and change api query to reflect new range selected by slider
+
+
+******* APPEND STUFF TO DOCUMENT USING JQUERY ************
+
+GOOD FOR DROP DOWN MENUS
+
+DEFINE JQUERY IN HTML DOC!
+add new div and add text between quotes in js 
+$('body').append(
+    $('<div></div>').text('oh hi');           
+);
+
+$.each(['Bronx', 'Manhattan', 'Queens', 'Brooklyn'], function (){
+$('.selector').append(
+    $('<option></option>').text(this);           
+);
+});
+
+In CLASS EXERCISE
+
+******* same as above but APPEND TO GEOJSON DATA
+
+use L.geoJson(.addTo (map);
+
+or,
+or, add this empty
+)
+go to class exmple for this.
+
+then we need to clear layers so
+
+extends feature group
+
+zoom to selected points on map
+   .done(function (data) {
+      var listingsLayer = L.geoJson(data).addTo(map);   
+      map.fitBounds(listingsLayer.getBounds());
+    });
+
+EXAMPLE:
+
+href="http://www.openstreetmap.org/copyright">ODbL</a>.',
+    maxZoom: 18
+}).addTo(map);
+  
+  // Ask CartoDB for the top 25 most expensive features, as GeoJSON
+  var url = 'https://eichnersara.cartodb.com/api/v2/sql?' + $.param({
+    q: 'SELECT * FROM listings ORDER BY price DESC LIMIT 2',
+    format: 'GeoJSON'
+  });
+  $.getJSON(url)
+  
+    // When it's done, add the results to the map
+    // add the map.fitBounds(match layer name to dataLayer=L.geoJson etc name defined in line just above fitBounds)
+    .done(function (data) {
+      dataLayer = L.geoJson(data).addTo(map);  
+      map.fitBounds(dataLayer.getBounds());
+    });
+  
+  $('.limit').change(function () {
+    var url = 'https://eichnersara.cartodb.com/api/v2/sql?' + $.param({
+      q: 'SELECT * FROM listings ORDER BY price DESC LIMIT ' + $(this).val(),
+      format: 'GeoJSON'
+    });
+    $.getJSON(url)
+
+      // When it's done, add the results to the map
+      // note that the map.fitBounds(dataLayer, etc. is added when data is appended AND when it is cleared, that's what changes zoom each time parameters are changed)
+
+      .done(function (data) {
+        dataLayer.clearLayers();
+        dataLayer.addData(data);
+        map.fitBounds(dataLayer.getBounds());
+      });
+  });
+});
+
+
+
+

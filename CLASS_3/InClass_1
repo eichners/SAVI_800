@@ -1,0 +1,7 @@
+https://eichnersara.cartodb.com/api/v2/sql?q=SELECT count(*) FROM listings
+
+returns:
+
+{"rows":[{"count":8979}],"time":0.009,"fields":{"count":{"type":"number"}},"total_rows":1}
+
+

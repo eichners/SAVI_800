@@ -1,0 +1,7 @@
+/* CSS BASE FILE*/
+
+/* set html to height: 100% for cartoDB iframe height control*/
+
+html {
+	height: 100%;
+}
