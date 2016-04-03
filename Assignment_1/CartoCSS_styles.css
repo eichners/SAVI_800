@@ -1,0 +1,85 @@
+/** CartoCSS_styles
+
+PLUTO  Map css drafts
+
+/** category visualization */
+
+#bkmappluto {
+   polygon-opacity: 0.8;
+   line-color: #FFF;
+   line-width: 0;
+   line-opacity: 1;
+}
+
+#bkmappluto[lottype="0"] {
+   polygon-fill: #3E7BB6;
+}
+#bkmappluto[lottype="1"] {
+   polygon-fill: #3E7BB6;
+}
+#bkmappluto[lottype="2"] {
+   polygon-fill: #B2DF8A;
+}
+#bkmappluto[lottype="3"] {
+   polygon-fill: #3E7BB6;
+}
+#bkmappluto[lottype="4"] {
+   polygon-fill: #3E7BB6;
+}
+#bkmappluto[lottype="5"] {
+   polygon-fill: #3E7BB6;
+}
+#bkmappluto[lottype="6"] {
+   polygon-fill: #FDBF6F;
+}
+#bkmappluto[lottype="7"] {
+   polygon-fill: #D6301D;
+}
+#bkmappluto[lottype="8"] {
+   polygon-fill: #A53ED5;
+}
+#bkmappluto[lottype="9"] {
+   polygon-fill: #F11810;
+}
+#bkmappluto {
+   polygon-fill: #DDDDDD;
+}
+
+sql 
+did not work:
+SELECT * 
+FROM bkmappluto
+
+Nor did this, to limit fields that would show on map:
+SELECT * 
+FROM bkmappluto
+WHERE lottype IS NOT '0', '1','2','3','4','5'
+
+SELECT * 
+FROM bkmappluto
+WHERE lottype != "0" OR "1" OR "2"
+
+Because I couldn't get the SQL to work, I have all the data loaded but colored with grey 
+
+Link to GMC ODD LOTS
+http://socks-studio.com/2014/10/22/gordon-matta-clarks-reality-properties-fake-estates-1973/
+http://www.cabinetmagazine.org/books/odd_lots.php
+
+<div class="cartodb-tooltip-content-wrapper">
+  <div class="cartodb-tooltip-content">
+    <p>{{address}}</p>
+    <h4>lot frontage (ft)</h4>
+    <p>{{lotfront}}</p>
+    <h4>bldg area (sq ft)</h4>
+    <p>{{bldgarea}}</p>
+    <h4>easements</h4>
+    <p>{{easements}}</p>
+    <h4>land use</h4>
+    <p>{{landuse}}</p>
+    <h4>lot type</h4>
+    <p>{{lottype}}</p>
+  </div>
+</div>
+
+
+WHERE bldgclass = 'Q0','Q1','Q2','Q3','Q4','Q5','Q6','Q7','Q8','Z8','U1','U6','U7','Q0','Z6','V','D2';
