@@ -22,7 +22,7 @@ $(document).ready(function () {
 	     var lotStyle = {color: '#ff4000',
 	     				fillColor : "#ff4000",
 	         			 weight: 3,
-        				 opacity: .9
+        				 opacity: 0.9
          };
 
 		    var lotClick = function (feature, layer) {

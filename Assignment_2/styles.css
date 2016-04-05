@@ -28,6 +28,9 @@ div .leaflet-popup-content {
 }
 
 .choice {
+=======
+.LIMIT {
+>>>>>>> Stashed changes
   position: absolute;
   top: 15px;
   right: 15px;
