@@ -1,0 +1,146 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>testing/experiment document</title>
+<!--<link rel="stylesheet" href="stylePractice.css">-->
+<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<style>
+ #first {
+	font-family: Verdana;
+	font-size: 25px;
+	font-style: italic;
+	}
+	#second {
+	font-family: helvetica;
+	font-size: 25px;
+	font-style: bold;
+	}
+	.carrot {
+		color: orange;
+	}
+	strong {
+		color: red;
+	}
+	.spinach {
+		color: green;
+	}
+	.sky {
+		color: gray;
+	}
+	.pink {
+		color: pink;
+	}
+	p{
+		font-family:verdana;
+		font-weight:600;
+	}
+	p#second {
+		color: blue;
+	}
+	p#first {
+		color:pink;
+	}
+
+a.homepage:link, a.homepage:visited {
+  padding: 1px 10px 1px 10px;
+  color: #fff;
+  background: pink;
+  border-radius: 3px;
+  font-family: verdana, sans-serif;
+  font-size: 14px;
+  text-decoration: none;
+}
+a.homepage {
+  padding: 1px 10px 1px 10px;
+  color: #fff;
+  background: pink;
+  border-radius: 3px;
+  font-family: verdana, sans-serif;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+a.homepage:hover, a.homepage:focus, a.homepage:active {
+  background-color: red;
+  text-decoration: none;
+}
+div.menu-bar {
+  position: relative;
+  margin: 10;
+  padding: 10;
+  height: 30px;
+  width: 90%;
+  color: black;
+  background: pink;
+  border-radius: 3px;
+  font-family: verdana, sans-serif;
+  font-size: 14px;
+list-style-type: none;
+}
+
+div.menu-bar ul ul {
+  display: none;
+  padding: 1px 10px 1px 10px;
+  color: pink;
+  background: pink;
+  border-radius: 3px;
+  font-family: verdana, sans-serif;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+div.menu-bar li:hover > ul {
+font-family: verdana, sans-serif;
+  font-size: 14px;
+  display: block;
+  text-decoration: none;
+}
+div.menu-nav {
+	  font-size: 14px;
+  text-decoration: none;
+} 
+	</style>
+</head>
+<body>
+<div class="menu-bar">
+  <ul>
+    <li>
+      <a href="example.html">Menu should display in verdana</a>
+      <ul>
+        <li>
+          <a href="example.html">Link</a>
+        </li>
+        <li>
+          <a class="menu-nav" href="example.html">Submenu</a>
+          <ul>
+            <li>
+              <a class="menu-nav" href="example.html">Submenu</a>
+              <ul>
+                <li><a href="example.html">Link link link</a></li>
+                <li><a href="example.html">Link</a></li>
+                <li><a href="example.html">Link</a></li>
+                <li><a href="example.html">Link</a></li>
+              </ul>
+            </li>
+            <li><a href="example.html">Link</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    <p>Go to our <a class="homepage" href="http://www.example.com/" title="Home page">Home page</a>.</p>
+  <br/>
+    <p id="first">
+      <strong class="carrot">C</strong>ascading
+      <strong class="spinach">S</strong>tyle
+      <strong class="sky">Sheets</strong>
+    </p>
+    <p id="second">
+      <strong class="sky">C</strong>ascading
+      <strong class ="pink">Style</strong>
+      <strong>S</strong>heets
+    </p>
+  </body>
+</html> 
