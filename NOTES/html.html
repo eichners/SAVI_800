@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Title Here</title>
+        <meta charset="utf-8" />
+    <!-- For full screen Leaflet maps, add the following meta tag to set parameters in the viewport-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+ 
+<!-- jQUERY -->
+<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+<!-- Include various CSS files here -->
+    <!-- such as: BOOTSTRAP CSS 
+    <link type="text/css" rel="stylesheet" href="libraries/bootstrap-3.3.6-dist/css/bootstrap.min.css"/> -->
+    <!-- LEAFLET CSS 
+    <link type="text/css" rel="stylesheet" href="libraries/leaflet-0.7.3/leaflet.css"/>   
+    CUSTOM CSS
+    <link type="text/css" rel="stylesheet" href="css/styles.css"/>-->
+  <script>
+	//$(document).ready(function(){
+
+// $(function() {
+
+// 	var content = "my new content";
+
+// 	$('.Button').on('click', function() {
+// 	var panelId = $(this).attr('data-panelid');
+// 		//this takes whatever the action was on, which button assuming there are more than one
+// 		// and keeps track of it to use it: then .attr('data-panelId) looks for attribute of panelId and tell me which one
+// 		// was clicked. Or we could ahve it do something to the attribute it identifies as the one that was clicked, or tie an action to it
+// 		// var content = 'my content' can be called to fill another element 
+// 		$('#' + panelId).toggle();
+// 		$('#' + panelId + '.panel-body').html(content);
+
+// 		//content in parenthesis but NO QUOTES makes it a variable! so it's getting the variable above, not printing the word content
+// 	//	change id's to classes in css
+
+// 	});
+
+	// DOM TRAVERSAL
+ //browser reads file and turns things into styles
+$(function(){
+	$('li').on('click', function(){
+	console.log('clicked li');
+		if ($(this).parent().is('.sublist')) {
+			$(this).hide();
+		}		
+	});
+});
+</script>
+  </head>
+
+
+  <body>
+
+
+<ul class="list">
+	<li>one</li>
+	<li>two</li>
+	<li>three</li>
+	<li>four</li>
+	<li><ul class="sublist">
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		</ul>
+	</li>
+</ul>
+
+</body>
+</html>

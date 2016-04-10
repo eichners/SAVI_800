@@ -31,9 +31,10 @@ div .leaflet-popup-content {
   color: white;
   width: auto;
   height: auto;
-  background-color: orange;
+  background: orange;
 }
  .leaflet-popup-content {
+  background: orange;
   width: 140px;
   margin: auto;
   padding: 10px;

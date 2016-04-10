@@ -20,24 +20,25 @@ path {
 	stroke-width: 4px;
 
 }
-
+/*
 div .leaflet-popup-content {
 	fill-opacity: .5; 
 	fill-color:'black';
   width: 160px,
 }
+*/
 
 .leaflet-popup-content-wrapper {
-  color: white;
   width: auto;
   height: auto;
   background-color: orange;
 }
- .leaflet-popup-content {
+
+.leaflet-popup-content {
   width: 140px;
   margin: auto;
-  padding: 10px;
-  padding-right: 10px;
+  padding: 5px;
+  padding-right: 5px;
   word-break: break-word;
 }
 

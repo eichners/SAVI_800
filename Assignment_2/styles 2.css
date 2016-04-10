@@ -27,24 +27,6 @@ div .leaflet-popup-content {
   width: 160px,
 }
 
-.leaflet-popup-content-wrapper {
-  color: white;
-  width: auto;
-  height: auto;
-  background-color: orange;
-}
- .leaflet-popup-content {
-  width: 140px;
-  margin: auto;
-  padding: 10px;
-  padding-right: 10px;
-  word-break: break-word;
-}
-
-.leaflet-popup-tip {
- background: orange;
-}
-
 .choice {
   position: absolute;
   top: 15px;
