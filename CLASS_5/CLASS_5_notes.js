@@ -1,5 +1,5 @@
 
-HTTP template strying for 
+HTTP template string for 
 
 function {name} ({parameters}) {
 	{code}
@@ -9,7 +9,7 @@ function {name} ({parameters}) {
 	])
 
 
-outside of calss
+outside of class
 
 work on updated api sql for homework
 

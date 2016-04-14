@@ -1,0 +1,60 @@
+Class 7 notes
+
+plugins
+
+use rawgit to copy url of flie and create a cdn for plugin files
+
+look for folder dist
+stands for distribution and should have javascript and css files
+
+
+
+add code 
+for mapzen, just the one line, plus api 
+after the map is added
+
+Masking plugin:
+look at Leaflet snogylop for an easier way to mask things out
+it is a simple inversion of point or polygon styles 
+
+CAN I USE /// 
+web site to find out what browsers support
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>EVENTS>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+L.Map events 
+map specific
+add by saying:
+
+
+
+var map = L.map ();
+map.on(dblclick, function (e) {
+	//do something on doublel click
+	console.log(e.latlng);
+	});
+
+
+$('.my-buttion').on('click',function (){
+	//
+});
+
+
+These events record lat long of clicks or events
+one of the properties produced by the MouseEvent will be latlng, or xy coordinates,
+
+look at Properties of L.map events 
+
+
+L.geoJson(data, { 
+onEachFeature: function (feature, layer)
+})
+
+.on takes two parameters, first is a string Or the feature, the next one is a ....layer here, not sure 
+
+layer.on('click, function (e, {
+	
+}
+
+look at event methods on leaflet for reference
