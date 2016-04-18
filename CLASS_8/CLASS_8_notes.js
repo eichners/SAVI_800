@@ -134,3 +134,87 @@ maxZoom: 19
 });
 
 </script>
+Tried above code and did not get it to work.
+Code below worked from class 8 JSbin:
+
+$(document).ready(function () {
+  var map = L.map('map').setView([45.489502,-73.578873], 10);
+  
+  // Add a base layer. We're using Stamen's Toner:
+  //  http://maps.stamen.com/#toner
+L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',{
+attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.',
+maxZoom: 19
+}).addTo(map);
+
+  console.log('anything');
+  // Ask CartoDB for the top 25 most expensive features, as GeoJSON
+
+ $.getJSON('https://eichnersara.cartodb.com/api/v2/sql?q=SELECT ST_Transform(ST_Buffer(the_geom_webmercator, 1000), 4326) AS the_geom FROM listings WHERE price > 400 &format=GeoJSON')
+   .done(function (data) {
+    L.geoJson(data, {
+         pointToLayer: function (feature, latlng) {
+        return L.circleMarker(latlng);
+        },
+
+        style: function (feature) {
+            var value = feature.properties.listings;
+                var style = {
+                radius: 4,
+                stroke: false,
+                fillOpacity: 0.5,
+                fillColor: 'red'
+                };
+           return style;
+        }
+        }).addTo(map);  
+    });
+   $.getJSON('https://eichnersara.cartodb.com/api/v2/sql?q=SELECT ST_Transform(ST_Convexhull(ST_Collect(the_geom_webmercator)), 4326) AS the_geom FROM listings GROUP BY neighbourhood&format=GeoJSON')
+   .done(function (data) {
+    L.geoJson(data, {
+
+        style: function (feature) {
+            var value = feature.properties.listings;
+                var style = {
+                radius: 4,
+                stroke: false,
+                fillOpacity: 0.5,
+                fillColor: 'green'
+                };
+           return style;
+        }
+        }).addTo(map);  
+    });
+});
+
+CSS:
+body {
+    padding: 0;
+    margin: 0;
+}
+html, body, #map {
+    height: 100%;
+}
+#map {
+    height: 100%;
+    width: 100%;
+}
+
+HTML:
+<!DOCTYPE html>
+<html>
+<head>
+  <title>spatial sql 1</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+   <script type="text/javascript" src="jQuery/jquery-1.11.2.min.js"></script>
+  <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+
+  <title>JS Bin</title>
+</head>
+<body>
+  <div id='map'</div>
+</body>
+</html>
