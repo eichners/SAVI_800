@@ -2,50 +2,50 @@
 
 <!DOCTYPE html>
 <html>
-  <head> </head>
-  <body>
-  
-  	  <script type="text/javascript" src="jQuery/jquery-1.11.2.min.js">
-  	  </script>
-  	  	<script>
-  	var url = 'https://eichnersara.cartodb.com/api/v2/sql?q=SELECT%20*%20FROM%20listings%20LIMIT%205';
-  	var myData;
-$.getJSON(url)
-.done(function (data) {
-	// do something with the data
-	console.log(data.rows[3].host_name);
-	console.log(data.rows);
-	console.log(data.rows[3].room_type);
-	console.log(data.rows[3].price);
-	myData = data;
+  <head> 
+    <title>SQL API exercise</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  	  <script type="text/javascript" src="jQuery/jquery-1.11.2.min.js"></script>
+      <script type="text/javascript" src="class3.js"></script>
+  	   <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+      <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+<style>
+body {
+    padding: 0;
+    margin: 0;
+}
+html, body, #map {
+    height: 100%;
+}
+#map {
+  position: float left;
+    height: 100%;
+    width: 80%;
+}
+#listings {
+  height: 100%;
+  width: 20%;
+  padding: 8;
+  margin: 8;
+  font-family: Verdana;
+  font-size: 12;
+  line-height: 1.5;
+  font-weight: 500;
+}
+</style>
+</head>
+<body>
 
-	});
-console.log(myData);
-</script>
+  <div id="map"></div>
+  <div id="listings">
+
+  the total number of rooms for rent is: <span class="total"></span><br/>
+  the average is: $<span class="average"></span><br/>
+  the minimum is: $<span class="minimum"></span><br/>
+  the maximum is: $<span class="maiximum"></span>
+  </div>
+
+
 </body>
-
-NEXT: STEP #
-
-// Show the top 25 most expensive AirBnB rentals in New York
-// using CartoDB's SQL API.
-//
-
-$(document).ready(function () {
-  // Create a map centered on NYC
-  var map = L.map('map').setView([45.489502,-73.578873], 10);
-  
-  // Add a base layer. We're using Stamen's Toner:
-  //  http://maps.stamen.com/#toner
-  L.tileLayer('http://tile.stamen.com/toner/{z}/{x}/{y}.png', {
-    attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.',
-    maxZoom: 18
-}).addTo(map);
-  
-  // Ask CartoDB for the top 25 most expensive features, as GeoJSON
-  $.getJSON('https://eric.cartodb.com/api/v2/sql?q=SELECT * FROM airbnb2 ORDER BY price DESC LIMIT 25&format=GeoJSON')
-  
-    // When it's done, add the results to the map
-    .done(function (data) {
-      L.geoJson(data).addTo(map);   
-    });
-});
+</html>

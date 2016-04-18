@@ -6,7 +6,7 @@
 
 $(document).ready(function () {
   // Create a map centered on NYC
-  var map = L.map('map').setView([40.731649,-73.977814], 10);
+  var map = L.map('map').setView([40.588928,-73.781776], 10);
   
   // Add a base layer. We're using Stamen's Toner:
   //  http://maps.stamen.com/#toner

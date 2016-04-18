@@ -1,0 +1,41 @@
+
+SIMPLE CARTODB QUERIES
+
+SELECT *
+FROM listings
+WHERE neighbourhood = 'Le Sud-Ouest'
+AND room_type = 'Entire home/apt'
+AND price < 1000
+OR price > 4000
+
+count of above = 
+SELECT COUNT (*)
+FROM listings
+WHERE neighbourhood = 'Le Sud-Ouest'
+AND room_type = 'Entire home/apt'
+AND price < 1000
+OR price > 4000
+
+
+SELECT DISTINCT(neighbourhood)
+FROM listings
+WHERE price < 40
+OR price > 4000
+
+SELECT 
+MIN(price), MAX(price) 
+FROM listings
+
+SELECT *
+FROM listings
+WHERE price < 25
+
+
+///// CARTODB API QUERIES
+
+https://eichnersara.cartodb.com/api/v2/sql?q=SELECT * FROM listings WHERE price > 4000
+copied data into console window after 
+response = parse.JSON(' all data from query here ')
+hit enter and JSON was returned
+
+can one use this response = parse.JSON('') function in javascript for sql data?
